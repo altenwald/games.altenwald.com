@@ -1,0 +1,8 @@
+[blog]
+title = "Altenwald Games"
+description = """
+  Games Development from the Backend!
+  """
+url = "https://games.altenwald.com/"
+
+items_per_page = 12
