@@ -16,4 +16,11 @@ blog do
     end
     set var_name: "cards"
   end
+
+  pages "about" do
+    set from: "snippets/about.md"
+    set template: "about.html"
+    set uri: "/about"
+    set var_name: "about"
+  end
 end

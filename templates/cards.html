@@ -1,116 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
+{% include "head.html" %}
 
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Altenwald Games</title>
-    <link rel="stylesheet" href="{{ blog.url }}css/bulma.min.css" />
-    <script src="{{ blog.url }}js/fontawesome.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{{ blog.url }}css/cards.css">
-  </head>
-
-  <body>
-    <!-- START NAV -->
-    <nav class="navbar">
-      <div class="container">
-        <div class="navbar-brand">
-          <a class="navbar-item" href="/">
-            {# <img src="" alt="Logo"> #}
-            <h1 class="title">Altenwald Games</h1>
-          </a>
-          {#
-          <span class="navbar-burger burger" data-target="navbarMenu">
-            <span></span>
-            <span></span>
-            <span></span>
-          </span>
-          #}
-        </div>
-        {# <div id="navbarMenu" class="navbar-menu">
-          <div class="navbar-end">
-            <a class="navbar-item is-active">
-              Home
-            </a>
-            <a class="navbar-item">
-              Examples
-            </a>
-            <a class="navbar-item">
-              Features
-            </a>
-            <a class="navbar-item">
-              Team
-            </a>
-            <a class="navbar-item">
-              Archives
-            </a>
-            <a class="navbar-item">
-              Help
-            </a>
-          </div>
-        </div> #}
-      </div>
-    </nav>
-    <!-- END NAV -->
-
-    <div class="container">
-      <div class="section">
-        <div class="columns">
-          <div class="column has-text-centered">
-            {% comment %} <h1 class="title" style="color: ghostwhite;">Altenwald Games</h1><br> {% endcomment %}
-          </div>
-        </div>
-        <div id="app" class="row columns is-multiline">
-          {% for card in cards %}
-          <div class="column is-4">
-            <div class="card large">
-              <div class="card-image">
-                <figure class="image is-16by9">
-                  <img src="{{ card.game }}" alt="Image">
-                </figure>
-              </div>
-              <div class="card-content">
-                <div class="media">
-                  <div class="media-left">
-                    <figure class="image is-48x48">
-                      <img src="{{ card.avatar }}" alt="Avatar">
-                    </figure>
-                  </div>
-                  <div class="media-content">
-                    <p class="title is-4 no-padding">{{ card.title }}</p>
-                    <p>
-                      <span class="title is-6">
-                        <a href="https://{{ card.link }}"> {{ card.link }} </a> </span> </p>
-                    <p class="subtitle is-6">&nbsp;</p>
-                  </div>
-                </div>
-                <div class="content">
-                  {{ card.content|safe }}
-                  <div class="background-icon"><span class="icon-twitter"></span></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          {% endfor %}
-        </div>
+<div class="container">
+  <div class="section">
+    <div class="columns">
+      <div class="column has-text-centered">
+        {% comment %} <h1 class="title" style="color: ghostwhite;">Altenwald Games</h1><br> {% endcomment %}
       </div>
     </div>
-    <footer class="footer">
-      <div class="container">
-        <div class="content has-text-centered">
-          <div class="soc">
-            <a href="https://github.com/altenwald"><i class="fa fa-github-alt fa-lg" aria-hidden="true"></i></a>
-            <a href="https://youtube.com/altenwald"><i class="fa fa-youtube fa-lg" aria-hidden="true"></i></a>
-            <a href="https://facebook.com/altenwald"><i class="fa fa-facebook fa-lg" aria-hidden="true"></i></a>
-            <a href="https://twitter.com/altenwald"><i class="fa fa-twitter fa-lg" aria-hidden="true"></i></a>
-            <a href="https://twitch.tv/altenwald"><i class="fa fa-twitch fa-lg" aria-hidden="true"></i></a>
+    <div id="app" class="row columns is-multiline">
+      {% for card in cards %}
+      <div class="column is-4">
+        <div class="card large">
+          <div class="card-image">
+            <figure class="image is-16by9">
+              <img src="{{ card.game }}" alt="Image">
+            </figure>
           </div>
-          <p>
-            <a href="https://altewnald.com"><strong>Altenwald</strong> Solutions S.L.</a>
-          </p>
+          <div class="card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-48x48">
+                  <img src="{{ card.avatar }}" alt="Avatar">
+                </figure>
+              </div>
+              <div class="media-content">
+                <p class="title is-4 no-padding">{{ card.title }}</p>
+                <p>
+                  <span class="title is-6">
+                    <a href="https://{{ card.link }}"> {{ card.link }} </a> </span> </p>
+                <p class="subtitle is-6">&nbsp;</p>
+              </div>
+            </div>
+            <div class="content">
+              {{ card.content|safe }}
+            </div>
+          </div>
+          <div class="card-footer">
+            <a href="https://{{ card.link }}" class="card-footer-item is-primary">
+              <i class="fas fa-play"></i>&nbsp;
+              Play
+            </a>
+            <a href="https://github.com/{{ card.source }}" class="card-footer-item">
+              <i class="fab fa-github"></i>&nbsp;
+              Code
+            </a>
+            {% if card.donate_link %}
+            <a href="{{ card.donate_link }}" class="card-footer-item is-success">
+              <i class="fab fa-paypal"></i>&nbsp;
+              Donate
+            </a>
+            {% endif %}
+          </div>
         </div>
       </div>
-    </footer>
-  </body>
-</html>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% include "foot.html" %}
