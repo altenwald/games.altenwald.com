@@ -6,7 +6,7 @@ build:
   image:
     dockerfile: ci/Dockerfile
     context: ci
-  limits: {cpus: 2, memory: 2g, timeout: 10m}
+  limits: {cpus: 2, memory: 4g, timeout: 10m}
   steps:
     - name: site
       run: |
