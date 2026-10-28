@@ -1,0 +1,21 @@
+# The site is generated with Lambdapad on every push to master and goes to the bucket that serves it (target
+# garage-games-altenwald-com of the dymploy server): the pages after the files they refer to, nothing is deleted.
+version: 1
+
+build:
+  image:
+    dockerfile: ci/Dockerfile
+    context: ci
+  limits: {cpus: 2, memory: 2g, timeout: 10m}
+  steps:
+    - name: site
+      run: |
+        ./lpad
+        test -s site/index.html
+
+artifact:
+  name: games-altenwald-com
+  paths: ["site/*"]
+
+deploy:
+  target: garage-games-altenwald-com
